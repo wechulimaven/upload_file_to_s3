@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from corsheaders.defaults import default_headers
+
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "corsheaders",
     "rest_framework",
     "storages",
 
@@ -46,6 +49,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -163,3 +167,17 @@ DEFAULT_FILE_STORAGE = 'file_server.storage_backends.PublicMediaStorage'
 # s3 private media settings
 PRIVATE_MEDIA_LOCATION = 'private'
 PRIVATE_FILE_STORAGE = 'file_server.storage_backends.PrivateMediaStorage'
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_HEADERS = default_headers + (
+    "access-control-allow-headers",
+    "withcredentials",
+    "x-incognito",
+    "x-referrer-value"
+)
+CORS_EXPOSE_HEADERS = (
+    "access-control-allow-origin",
+    "access-control-allow-credentials",
+)

@@ -26,8 +26,8 @@ services:
     env_file:
       - .env.db
 
-  redis:
-    container_name: file_server_stage_redis
+  # redis:
+  #   container_name: file_server_stage_redis
 
   # celery:
   #   build:

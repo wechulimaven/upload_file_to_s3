@@ -1,0 +1,94 @@
+version: '3.9'
+
+services:
+  web:
+    container_name: file_server_stage_prod
+    volumes:
+      - static_volume:/home/app/web/static
+    environment:
+      - DEBUG=True
+    ports:
+      - "8000:8000"
+    # logging:
+    #   driver: "awslogs"
+    #   options:
+    #     awslogs-region: "us-east-1"
+    #     awslogs-group: "Backend-Prod-Log"
+    #     awslogs-stream: "production"
+
+  db:
+    image: postgres:15
+    container_name: file_server_prod_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - .env
+
+  # nginx-proxy:
+  #   container_name: file_server_prod_nginx_proxy
+  #   build: nginx
+  #   restart: always
+  #   ports:
+  #     - "443:443"
+  #     - "80:80"
+  #   volumes:
+  #     - static_volume:/home/app/web/static
+  #     - media_volume:/home/app/web/media
+  #     - certs:/etc/nginx/certs
+  #     - html:/usr/share/nginx/html
+  #     - vhost:/etc/nginx/vhost.d
+  #     - /var/run/docker.sock:/tmp/docker.sock:ro
+  #   depends_on:
+  #     - web
+  #   labels:
+  #     - "com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy"
+
+  # nginx-proxy-letsencrypt:
+  #   image: jrcs/letsencrypt-nginx-proxy-companion
+  #   container_name: file_server_prod_nginx_proxy_letsencrypt
+  #   env_file:
+  #     - .env.proxy-companion
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock:ro
+  #     - certs:/etc/nginx/certs
+  #     - html:/usr/share/nginx/html
+  #     - vhost:/etc/nginx/vhost.d
+  #     - acme:/etc/acme.sh
+  #   depends_on:
+  #     - nginx-proxy
+
+
+  # redis:
+  #   container_name: file_server_prod_redis
+
+  # celery:
+  #   build:
+  #     dockerfile: docker/Dockerfile.celery
+  #   container_name: file_server_prod_celery
+  #   logging:
+  #     driver: "awslogs"
+  #     options:
+  #       awslogs-region: "us-east-1"
+  #       awslogs-group: "Backend-Prod-Log"
+  #       awslogs-stream: "celery_production"
+
+  # celery-beat:
+  #   build:
+  #     dockerfile: docker/Dockerfile.celery
+  #   container_name: file_server_prod_celery_beat
+  #   logging:
+  #     driver: "awslogs"
+  #     options:
+  #       awslogs-region: "us-east-1"
+  #       awslogs-group: "Backend-Prod-Log"
+  #       awslogs-stream: "celery_beat_production"
+
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
+  certs:
+  html:
+  vhost:
+  acme:

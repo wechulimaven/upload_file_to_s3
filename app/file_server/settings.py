@@ -78,10 +78,20 @@ WSGI_APPLICATION = "file_server.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("RDS_NAME"),
+        "HOST": os.getenv("RDS_HOST"),
+        "PORT": os.getenv("RDS_PORT"),
+        "USER": os.getenv("RDS_USER"),
+        "PASSWORD": os.getenv("RDS_PASSWORD"),
     }
 }
 

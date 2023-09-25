@@ -189,8 +189,6 @@ CORS_EXPOSE_HEADERS = (
     "access-control-allow-credentials",
 )
 
-SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-
 
 # https://main.dn919gnwth4vw.amplifyapp.com
 # file-server-lb-2057549471.us-east-1.elb.amazonaws.com

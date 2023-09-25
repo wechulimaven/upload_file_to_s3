@@ -171,13 +171,15 @@ PRIVATE_FILE_STORAGE = 'file_server.storage_backends.PrivateMediaStorage'
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ALLOW_HEADERS = default_headers + (
-    "access-control-allow-headers",
-    "withcredentials",
-    "x-incognito",
-    "x-referrer-value"
-)
-CORS_EXPOSE_HEADERS = (
-    "access-control-allow-origin",
-    "access-control-allow-credentials",
-)
+# CORS_ALLOW_HEADERS = default_headers + (
+#     "access-control-allow-headers",
+#     "withcredentials",
+#     "x-referrer-value"
+# )
+# CORS_EXPOSE_HEADERS = (
+#     "access-control-allow-origin",
+#     "access-control-allow-credentials",
+# )
+
+# https://main.dn919gnwth4vw.amplifyapp.com
+# file-server-lb-2057549471.us-east-1.elb.amazonaws.com

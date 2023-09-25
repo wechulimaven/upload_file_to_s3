@@ -20,7 +20,8 @@ class UploadFielView(CreateAPIView):
         return self.serializer_class(*args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        print(f"REQUEST {request}")
+        print(f"REQUEST data {request.data}")
+        print(f"REQUEST Headers {request.headers}")
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         gallery = serializer.save()

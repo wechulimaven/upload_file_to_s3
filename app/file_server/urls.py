@@ -20,5 +20,6 @@ from s3_upload import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/v1/upload/", views.UploadFielView.as_view(), name="upload-file")
+    path("api/v1/upload/", views.UploadFielView.as_view(), name="upload-file"),
+    path("api/v1/trial/", views.TrialView.as_view(), name="tial-file")
 ]

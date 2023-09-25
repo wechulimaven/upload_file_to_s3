@@ -28,8 +28,10 @@ SECRET_KEY = "django-insecure-%o#x-b!3fn7#q+x3qyw_!%!vtqw(q^xy&zv^e3+_0=+=c=cpcu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
-
+ALLOWED_HOSTS = [
+    "file-server-lb-2057549471.us-east-1.elb.amazonaws.com",
+    "3.224.186.202",
+    "ec2-3-224-186-202.compute-1.amazonaws.com", "127.0.0.0"]
 
 # Application definition
 
@@ -170,6 +172,12 @@ PRIVATE_FILE_STORAGE = 'file_server.storage_backends.PrivateMediaStorage'
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = (
+    "http://file-server-lb-2057549471.us-east-1.elb.amazonaws.com",
+    "http://www.file-server-lb-2057549471.us-east-1.elb.amazonaws.com",
+    "https://main.dn919gnwth4vw.amplifyapp.com",
+    "https://www.main.dn919gnwth4vw.amplifyapp.com"
+)
 CORS_ALLOW_HEADERS = default_headers + (
     "access-control-allow-headers",
     "withcredentials",
@@ -180,6 +188,9 @@ CORS_EXPOSE_HEADERS = (
     "access-control-allow-origin",
     "access-control-allow-credentials",
 )
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
 
 # https://main.dn919gnwth4vw.amplifyapp.com
 # file-server-lb-2057549471.us-east-1.elb.amazonaws.com

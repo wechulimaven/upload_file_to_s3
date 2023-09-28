@@ -31,7 +31,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "file-server-lb-2057549471.us-east-1.elb.amazonaws.com",
     "3.224.186.202",
-    "ec2-3-224-186-202.compute-1.amazonaws.com", "127.0.0.0"]
+    "ec2-3-224-186-202.compute-1.amazonaws.com", "127.0.0.0",
+    "api.pipkenya.online"]
 
 # Application definition
 
@@ -176,7 +177,8 @@ CORS_ALLOWED_ORIGINS = (
     "http://file-server-lb-2057549471.us-east-1.elb.amazonaws.com",
     "http://www.file-server-lb-2057549471.us-east-1.elb.amazonaws.com",
     "https://main.dn919gnwth4vw.amplifyapp.com",
-    "https://www.main.dn919gnwth4vw.amplifyapp.com"
+    "https://www.main.dn919gnwth4vw.amplifyapp.com",
+    "https://api.pipkenya.online/",
 )
 CORS_ALLOW_HEADERS = default_headers + (
     "access-control-allow-headers",

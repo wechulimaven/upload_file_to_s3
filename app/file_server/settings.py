@@ -31,7 +31,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "file-server-lb-2057549471.us-east-1.elb.amazonaws.com",
     "3.224.186.202",
-    "ec2-3-224-186-202.compute-1.amazonaws.com", "127.0.0.0",
+    "ec2-3-224-186-202.compute-1.amazonaws.com",
+    "127.0.0.1",
     "api.pipkenya.online"]
 
 # Application definition

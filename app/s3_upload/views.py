@@ -23,14 +23,24 @@ class UploadFielView(CreateAPIView):
         print(f"REQUEST data {request.data}")
         print(f"REQUEST Headers {request.headers}")
         serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        gallery = serializer.save()
-        serializer = self.get_serializer(gallery)
-        return Response({
-            "status": True,
-            "message": "Upload successfull",
-            "data": serializer.data
-        })
+        # serializer.is_valid(raise_exception=True)
+        if serializer.is_valid():
+
+            gallery = serializer.save()
+            serializer = self.get_serializer(gallery)
+            return Response({
+                "status": True,
+                "message": "Upload successfull",
+                "data": serializer.data
+            })
+        else:
+            print(f"ERROR {serializer.errors}")
+            return Response({
+                "status": False,
+                "message": "Upload failed",
+                "data": serializer.errors
+            })
+
 
 
 class TrialView(CreateAPIView):

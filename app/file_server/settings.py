@@ -172,15 +172,14 @@ DEFAULT_FILE_STORAGE = 'file_server.storage_backends.PublicMediaStorage'
 PRIVATE_MEDIA_LOCATION = 'private'
 PRIVATE_FILE_STORAGE = 'file_server.storage_backends.PrivateMediaStorage'
 
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
+CSRF_TRUSTED_ORIGINS = ['https://api.pipkenya.online']
 CORS_ALLOW_CREDENTIALS = True
-# CORS_ALLOWED_ORIGINS = (
-#     "http://file-server-lb-2057549471.us-east-1.elb.amazonaws.com",
-#     "http://www.file-server-lb-2057549471.us-east-1.elb.amazonaws.com",
-#     "https://main.dn919gnwth4vw.amplifyapp.com",
-#     "https://www.main.dn919gnwth4vw.amplifyapp.com",
-#     "https://api.pipkenya.online/",
-# )
+CORS_ALLOWED_ORIGINS = (
+    "https://main.dn919gnwth4vw.amplifyapp.com",
+    "https://www.main.dn919gnwth4vw.amplifyapp.com",
+    "https://api.pipkenya.online",
+)
 CORS_ALLOW_HEADERS = default_headers + (
     "access-control-allow-headers",
     "withcredentials",
